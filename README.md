@@ -87,10 +87,4 @@ text
 
 ---
 
-## License
-
-MIT License (or specify your project's license here)
-
----
-
-For more details, see the [full project report](team002report.pdf](https://github.com/knvid/Recipe-Recommendation-System/blob/main/team002report.pdf).
+For more details, see the [full project report](https://github.com/knvid/Recipe-Recommendation-System/blob/main/team002report.pdf).
