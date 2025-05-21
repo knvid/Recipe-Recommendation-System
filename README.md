@@ -64,3 +64,33 @@ This project is a web-based **recipe recommendation system** designed to help un
 
 1. **Clone the repository**
 2. **Install dependencies**
+
+pip install -r requirements.txt
+
+text
+3. **Run the Flask server**
+python app.py
+
+text
+4. **Access the web app** at `http://localhost:5000`
+
+---
+
+## Contributors
+
+- Aditi Jain
+- Vidhya Kewale
+- Akshaya Perumal
+- Shriya Purohit
+- Savrina Salartash
+- Priyanka Singh
+
+---
+
+## License
+
+MIT License (or specify your project's license here)
+
+---
+
+For more details, see the [full project report](team002report.pdf](https://github.com/knvid/Recipe-Recommendation-System/blob/main/team002report.pdf).
