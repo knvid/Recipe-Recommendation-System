@@ -1,0 +1,276 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Form</title>
+    <style>
+    .dropdown-container {
+        margin-bottom: 10px;
+        text-align: left; 
+    }
+    .dropdown-label {
+        display: inline-block;
+        background-color: #f0f0f0;
+        padding: 10px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+        margin-bottom: 5px; 
+    }
+    .dropdown-select {
+        display: none;
+        width: 300px;
+        box-sizing: border-box;
+        margin: 0 auto;
+        }
+        .big-select {
+        height: 200px;
+    }
+
+    body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        .header {
+            justify-content: center;
+            text-align: center;
+            background-color: #d2dbcc;
+            padding: 10px;
+        }
+
+        .header form {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-left: 150px;
+            margin-right: 150px;
+        }
+
+        .header select {
+            justify-content: center;
+            width: calc((100% - 300px) / 3);
+            margin-right: 10px;
+            margin-bottom: 10px;
+            height: 40px;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .header button {
+            justify-content: center;
+            width: calc(33.33% - 10px);
+            margin-right: 10px;
+            margin-bottom: 10px;
+            height: 40px;
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        .header textarea {
+            justify-content: center;
+            width: 80%;
+            margin-bottom: 10px;
+        }
+
+        .recipe_container {
+            margin-left: 00px;
+            padding: 1px 16px;
+            height: 1000px;
+        }
+
+        .recipe {
+            margin-top: 20px;
+            float: left;
+            width: 65%;
+        }
+
+        .recipe h2 {
+            margin-top: 10px;
+            margin-left: 5%;
+            color: #333;
+        }
+
+        .recipe p {
+            margin-left: 5%;
+            color: #555;
+        }
+
+        .figures {
+            margin-top: 20px;
+            float: right;
+            width: 30%;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        @media only screen and (max-width: 800px) {
+            .recipe {
+                width: 100%;
+                float: none;
+            }
+
+            .figures {
+                width: 100%;
+                float: none;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <image src="https://cdn-icons-png.flaticon.com/128/45/45605.png"></image>
+        <h1>Recipe Recommendation System</h1>
+        <form id="recipeForm">
+            <textarea id="inputIngredients" name="inputIngredients" rows="4" cols="50" placeholder="Enter Ingredients..."></textarea><br>
+
+    <!-- <h2>Enter Ingredients:</h2>
+    <form id="recipeForm">
+        <textarea id="inputIngredients" name="inputIngredients" rows="4" cols="50"></textarea><br> -->
+
+
+        <div class="dropdown-container">
+            <div class="dropdown-label">Select Cuisine:</div>
+            <select id="cuisine" name="cuisine" class="dropdown-select">
+                <option value="No preference">No preference</option>
+                <option value="Australian">Australian</option>
+                <option value="Canadian">Canadian</option>
+                <option value="European">European</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Middle Eastern">Middle Eastern</option>
+                <option value="American">American</option>
+                <option value="African">African</option>
+                <option value="Indian">Indian</option>
+                <option value="Russian">Russian</option>
+                <option value="Asian">Asian</option>
+                <option value="Oceanian">Oceanian</option>
+                <option value="Caribbean/Latin American">Caribbean/Latin American</option>
+            </select>
+        </div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-label">Select Diet Type:</div>
+            <select id="diet" name="diet" multiple class="dropdown-select big-select">
+                <option value="No preference">No preference</option>
+                <option value="Gluten Free">Gluten Free</option>
+                <option value="Dairy Free">Dairy Free</option>
+                <option value="Special Nutrient Food">Special Nutrient Food</option>
+                <option value="Low Carb">Low Carb</option>
+                <option value="Low Protein">Low Protein</option>
+                <option value="Diabetic Friendly">Diabetic Friendly</option>
+                <option value="Kosher">Kosher</option>
+                <option value="High Protein">High Protein</option>
+                <option value="High Fiber">High Fiber</option>
+                <option value="Vegetarian">Vegetarian</option>
+                <option value="Healthy">Healthy</option>
+                <option value="Low Calorie">Low Calorie</option>
+                <option value="Low Fat">Low Fat</option>
+                <option value="Low Saturated Fat">Low Saturated Fat</option>
+                <option value="Low Sodium">Low Sodium</option>
+                <option value="Low Cholesterol">Low Cholesterol</option>
+                <option value="Vegan">Vegan</option>
+                <option value="High Calcium">High Calcium</option>
+                <option value="Lactose Free">Lactose Free</option>
+                <option value="Non Vegetarian">Non Vegetarian</option>
+            </select>
+    </div>
+
+        <div class="dropdown-container">
+            <div class="dropdown-label">Select Time to Make:</div>
+            <select id="time" name="time" class="dropdown-select">
+                <option value="No preference">No preference</option>
+                <option value="Within 15 minutes">Within 15 minutes</option>
+                <option value="Within 30 minutes">Within 30 minutes</option>
+                <option value="Within 1 hour">Within 1 hour</option>
+                <option value="Within 2 hours">Within 2 hours</option>
+                <option value="Within 3 hours">Within 3 hours</option>
+                <option value="More than 4 hours">More than 4 hours</option>
+            </select>
+        </div>
+
+
+        <button type="submit">Get Recommendations</button>
+    </form>
+
+
+    <div id="recommendations">
+        <!-- Recommendations will be displayed here -->
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.dropdown-label').click(function() {
+                $(this).next('.dropdown-select').slideToggle();
+            });
+
+        $('.dropdown-select').slideUp();
+
+        $('#recipeForm').submit(function(event) {
+            event.preventDefault();
+            var inputIngredients = $('#inputIngredients').val();
+            var cuisine = $('#cuisine').val();
+            var selectedDiets = $('#diet').val();
+            var time = $('#time').val();
+            var requestData = {
+                input_str: inputIngredients,
+                cuisine: cuisine,
+                diet_type: selectedDiets,
+                time_to_make: time
+            };
+
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/recommendations',
+            contentType: 'application/json',
+            data: JSON.stringify(requestData),
+            success: function(response) {
+            displayRecommendations(response);
+            },
+            error: function(xhr, status, error) {
+                console.error('Error:', error);
+            }
+        });
+    });
+
+
+    function displayRecommendations(recipes) {
+        if (typeof recipes === 'string') {
+            $('#recommendations').html('<p>' + recipes + '</p>');
+        } else {
+            var html = '<h2>Recommended Recipes:</h2>';
+            recipes.forEach(function(recipe) {
+                html += '<div>';
+                html += '<h3>' + recipe.name + '</h3>';
+                html += '<p><strong>Ingredients:</strong> ' + recipe.ingredients + '</p>';
+                html += '<p><strong>Steps:</strong> ' + recipe.steps + '</p>';
+                html += '</div>';
+            });
+            $('#recommendations').html(html);
+        }
+    }
+    
+});
+
+</script>
+</body>
+</html>
+
+
+{% endblock %}
